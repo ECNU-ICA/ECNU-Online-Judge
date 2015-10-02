@@ -83,7 +83,7 @@ struct bign{
   }
 
 
-  bign operator - (const bign& b) {//¸ÃËã·¨½öÖ§³Ö  ´óµÄÊý-Ð¡µÄÊý
+  bign operator - (const bign& b) {//该算法仅支持  大的数-小的数
     bign c; c.len = 0;
     for(int i = 0, g = 0; i < len; i++) {
       int x = s[i] - g;
@@ -100,7 +100,7 @@ struct bign{
   }
 
 
-  bool operator < (const bign& b) const{//¿ÉÑ¡
+  bool operator < (const bign& b) const{//可选
     if(len != b.len) return len < b.len;
     for(int i = len-1; i >= 0; i--)
       if(s[i] != b.s[i]) return s[i] < b.s[i];
@@ -108,22 +108,22 @@ struct bign{
   }
 
 
-  bool operator > (const bign& b) const{//¿ÉÑ¡
+  bool operator > (const bign& b) const{//可选
     return b < *this;
   }
 
 
-  bool operator <= (const bign& b) {//¿ÉÑ¡
+  bool operator <= (const bign& b) {//可选
     return !(b < *this);
   }
 
 
-  bool operator == (const bign& b) {//¿ÉÑ¡
+  bool operator == (const bign& b) {//可选
     return !(b < *this) && !(*this < b);
   }
 
 
-  bign operator += (const bign& b) {//¿ÉÑ¡
+  bign operator += (const bign& b) {//可选
     *this = *this + b;
     return *this;
   }
@@ -145,4 +145,4 @@ int main()
         }
     }
     return 0;
-}//Parsed in 0.183 seconds
+}//Parsed in 0.189 seconds

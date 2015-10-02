@@ -58,4 +58,4 @@ int main()
         printf("%d\n",dp[lenA][lenB]);
     }
     return 0 ;
-}//Parsed in 0.056 seconds
+}//Parsed in 0.092 seconds

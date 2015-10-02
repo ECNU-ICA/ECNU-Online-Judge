@@ -19,7 +19,7 @@ int go[][2]=
     1 , 2
 };
 bool vis[30][30];
-int path[30][2];//¼ÇÂ¼×ø±ê
+int path[30][2];//记录坐标
 int sum;
 int p,q;
 bool isput;
@@ -74,4 +74,4 @@ int main ()
         printf("\n");
     }
     return 0;
-}//Parsed in 0.078 seconds
+}//Parsed in 0.137 seconds

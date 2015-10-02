@@ -20,4 +20,4 @@ int main()
         printf("%d\n",num[n]);
     }
     return 0;
-}//Parsed in 0.032 seconds
+}//Parsed in 0.018 seconds

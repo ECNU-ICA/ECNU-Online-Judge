@@ -22,4 +22,4 @@ int main()
         }
         printf("\n");
     }
-}//Parsed in 0.073 seconds
+}//Parsed in 0.071 seconds

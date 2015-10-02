@@ -33,9 +33,9 @@ void postOrder(Node *T)
     }
     printf("%c",T -> c);
 }
-//ÓÉ×Ö·û´®µÄÇ°Ðò±éÀúºÍÖÐÐò±éÀú»¹Ô­Ê÷,
-//²¢·µ»ØÆä¸ù½Úµã,ÆäÖÐÇ°Ðò±éÀú½á¹ûÎª
-//ÓÉstr1[s1]µ½str2[e1]£¬ÖÐÐò±éÀú½á¹ûÎªstr2[s2]µ½str2[e2]
+//由字符串的前序遍历和中序遍历还原树,
+//并返回其根节点,其中前序遍历结果为
+//由str1[s1]到str2[e1]，中序遍历结果为str2[s2]到str2[e2]
 Node *build(int s1,int e1,int s2,int e2)
 {
 
@@ -69,8 +69,8 @@ int main ()
         int L1 = strlen(str1);
         int L2 = strlen(str2);
         Node *T = build(0,L1 - 1,0,L2 - 1);
-        postOrder(T);//ºóÐò±éÀú
+        postOrder(T);//后序遍历
         printf("\n");
     }
     return 0;
-}//Parsed in 0.109 seconds
+}//Parsed in 0.123 seconds

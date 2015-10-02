@@ -41,4 +41,4 @@ int main()
         printf("%d %d\n",con,a);
     }
     return 0;
-}//Parsed in 0.042 seconds
+}//Parsed in 0.075 seconds

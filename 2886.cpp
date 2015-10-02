@@ -33,4 +33,4 @@ int main ()
         printf("%.2lf\n",getRat(salary)==0?0:((salary-1500)*getRat(salary)));
     }
     return 0;
-}//Parsed in 0.057 seconds
+}//Parsed in 0.055 seconds

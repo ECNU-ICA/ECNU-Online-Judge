@@ -24,4 +24,4 @@ int main ()
         printf("%s\n",s.c_str());
     }
     return 0;
-}//Parsed in 0.021 seconds
+}//Parsed in 0.036 seconds

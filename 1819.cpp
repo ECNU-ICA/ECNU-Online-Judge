@@ -24,4 +24,4 @@ int main()
     qsort(a,i,sizeof(int),cmp);
     for(j = 0; j < k; j++)
         printf("%d: %d\n",j+1,a[j]);
-}//Parsed in 0.034 seconds
+}//Parsed in 0.062 seconds

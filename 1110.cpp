@@ -5,7 +5,7 @@
 using namespace std;
 
 
-//¶þÎ¬Êý×é,Æä³õÊ¼Öµ¼´Îª¸ÃÍ¼µÄÁÚ½Ó¾ØÕó
+//二维数组,其初始值即为该图的邻接矩阵
 int ans[201][201];
 int main ()
 {
@@ -51,4 +51,4 @@ int main ()
         }
     }
     return 0;
-}//Parsed in 0.072 seconds
+}//Parsed in 0.064 seconds

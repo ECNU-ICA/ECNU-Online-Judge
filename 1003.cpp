@@ -8,21 +8,21 @@
 using namespace std;
 
 
-char a[2001], b[2001];  //Êý×éa¼ÈÊÇÓÃÓÚ´æ·ÅÊäÈë£¬ÓÖÓÃÀ´µ±×÷ÏßÐÔÕ»´¦Àí
+char a[2001], b[2001];  //数组a既是用于存放输入，又用来当作线性栈处理
 
 
 int main()
-{   int i, j, k, len, m = 0;    //i×÷ÎªÊý×éAµÄÏÂ±ê£¬jÓÃÓÚÊý×éBµÄÐ¡±ê£¬k×÷ÎªÕ»µÄÏÂ±ê´¦Àí
+{   int i, j, k, len, m = 0;    //i作为数组A的下标，j用于数组B的小标，k作为栈的下标处理
 
 
-    while(gets(a))  //Ñ­»·´¦ÀíÊäÈë£¬Ö±ÖÁÊäÈëCTRL+Z½áÊøÑ­»·
+    while(gets(a))  //循环处理输入，直至输入CTRL+Z结束循环
     {   i = 0;
         j = 0;
         k = 0;
         len = strlen(a);
 
 
-        for(; i<len; i++)   //½«ÖÐ×º»»³Éºó×ºÊ½£¬´æ·Åµ½Êý×ébÖÐ
+        for(; i<len; i++)   //将中缀换成后缀式，存放到数组b中
             switch(a[i])
             {   case 'V':
                 case 'F':   b[j++] = a[i];
@@ -52,7 +52,7 @@ int main()
 
 
 
-        for(j = 0, k = 0; j<len; j++)   //ºó×ºÊ½ÇóÖµ
+        for(j = 0, k = 0; j<len; j++)   //后缀式求值
             switch(b[j])
             {   case 'V':
                 case 'F':   a[k++] = b[j];
@@ -66,7 +66,7 @@ int main()
                             k--;
                             break;
             }
-        printf("Expression %d: %c\n", ++m, a[0]);   //Ñ­»·½áÊøÊ±a[0]Ò»¶¨Îª×îÖÕµÄ½á¹û
+        printf("Expression %d: %c\n", ++m, a[0]);   //循环结束时a[0]一定为最终的结果
     }
     return 0;
-}//Parsed in 0.202 seconds
+}//Parsed in 0.173 seconds

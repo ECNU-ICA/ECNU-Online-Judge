@@ -35,4 +35,4 @@ int main()
         printf("%d\n",getDis(1));
     }
     return 0;
-}//Parsed in 0.054 seconds
+}//Parsed in 0.031 seconds

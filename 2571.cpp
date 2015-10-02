@@ -28,4 +28,4 @@ int main()
         printf("%d %d\n",mgcd,mlcm);
     }
     return 0;
-}//Parsed in 0.042 seconds
+}//Parsed in 0.023 seconds

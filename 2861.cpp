@@ -15,4 +15,4 @@ int main()
         printf("%d\n",a+b);
     }
     return 0;
-}//Parsed in 0.011 seconds
+}//Parsed in 0.020 seconds

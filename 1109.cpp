@@ -39,4 +39,4 @@ int main()
         printf("%d\n",maxm);
     }
     return 0;
-}//Parsed in 0.056 seconds
+}//Parsed in 0.038 seconds

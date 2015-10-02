@@ -15,7 +15,7 @@ struct N
     int x;
     int y;
     int t;
-    bool operator < (const N &b)const // Ö»ÄÜÖØÔØÐ¡ÓÚºÅ
+    bool operator < (const N &b)const // 只能重载小于号
     {
         return t>b.t;
     }
@@ -94,4 +94,4 @@ int main()
         }
     }
     return 0;
-}//Parsed in 0.132 seconds
+}//Parsed in 0.133 seconds

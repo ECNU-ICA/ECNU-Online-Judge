@@ -27,4 +27,4 @@ int main()
         printf("character:%d\nnumber:%d\nothers:%d\n",zimu,shuzi,qita);
     }
     return 0;
-}//Parsed in 0.036 seconds
+}//Parsed in 0.064 seconds

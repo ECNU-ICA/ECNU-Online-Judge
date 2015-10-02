@@ -121,7 +121,7 @@ int main ()
 
         scanf("%d",&x);
         printf("%d\n",num[x]);
- /* ´ò±í³ÌÐò      for(int x=0;x<=1000;x++){
+ /* 打表程序      for(int x=0;x<=1000;x++){
         con=0;
         for(int i=0;;i++)
         {
@@ -145,4 +145,4 @@ int main ()
         }*/
     }
     return 0;
-}//Parsed in 0.487 seconds
+}//Parsed in 0.481 seconds

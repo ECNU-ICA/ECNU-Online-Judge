@@ -14,10 +14,10 @@ typedef struct Graph
 #define E 1000010
 #define N 1000010
 // i
-//head[i]±íÊ¾ÒÔiÎªÆðµãµÄµÚ1Ìõ±ßµÄ´æ´¢Î»ÖÃ
-//next[i]±íÊ¾ÓëµÚiÌõ±ßÍ¬ÆðµãµÄÏÂÒ»Ìõ±ßµÄ´æ´¢Î»ÖÃ
-// pnt[j] xµ½iÎ»ÖÃµÄµã
-// val[j] xµ½iÎ»ÖÃµÄ±ßµÄÈ¨Öµ
+//head[i]表示以i为起点的第1条边的存储位置
+//next[i]表示与第i条边同起点的下一条边的存储位置
+// pnt[j] x到i位置的点
+// val[j] x到i位置的边的权值
     int pnt[E], next[E];
     int val[E];
     //int parent[E];
@@ -30,13 +30,13 @@ typedef struct Graph
         memset(head, endTag, sizeof(head));
         ne= 0;
     }
-    //²»´øÈ¨Öµ
+    //不带权值
     void add(const int u, const int v)
     {
         pnt[ne]= v, next[ne]= head[u], head[u]= ne++;
         //parent[ne]=u;
     }
-    //´øÈ¨Öµ
+    //带权值
     void add(const int u, const int v, const int w)
     {
         pnt[ne]= v, val[ne]= w, next[ne]= head[u], head[u]= ne++;
@@ -46,7 +46,7 @@ typedef struct Graph
 Graph g;
 bool vis[1000010];
 int num;
-void bfs(int x)//±éÀúxµÄ
+void bfs(int x)//遍历x的
 {
     queue<int> Q;
     while(!Q.empty()) Q.pop();
@@ -90,4 +90,4 @@ int main()
             printf("no\n");
     }
     return 0;
-}//Parsed in 0.151 seconds
+}//Parsed in 0.083 seconds

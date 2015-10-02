@@ -22,4 +22,4 @@ int main()
         printf("%d\n",sum);
     }
     return 0;
-}//Parsed in 0.031 seconds
+}//Parsed in 0.017 seconds

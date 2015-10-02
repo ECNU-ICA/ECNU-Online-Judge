@@ -10,7 +10,7 @@
 using namespace std;
 
 
-long long dp[55][55];//dp[i][j] µÚi¸ö¾ØÕóµ½µÚj¸ö¾ØÕóµÄ×îÓÅ½â
+long long dp[55][55];//dp[i][j] 第i个矩阵到第j个矩阵的最优解
 int x[55],y[55];
 
 
@@ -28,12 +28,12 @@ int main()
             scanf("%d %d",&x[i],&y[i]);
             dp[i][i]=0;
         }
-        //µ±i<j m[i][j] = min{ m[i][k]+m[k+1][j]+Pi-1*Pk*Pj }
-        for(int l=2;l<=n;l++)//¾ØÕó³¤¶È
+        //当i<j m[i][j] = min{ m[i][k]+m[k+1][j]+Pi-1*Pk*Pj }
+        for(int l=2;l<=n;l++)//矩阵长度
         {
-            for(int i=1;i<=n-l+1;i++)// i¿ªÊ¼×ø±ê
+            for(int i=1;i<=n-l+1;i++)// i开始坐标
             {
-                int j=i+l-1;// j½áÊø×ø±ê
+                int j=i+l-1;// j结束坐标
                 int mini;
                 for(int k=i;k<j;k++)
                 {
@@ -49,4 +49,4 @@ int main()
 
     }
     return 0;
-}//Parsed in 0.053 seconds
+}//Parsed in 0.095 seconds

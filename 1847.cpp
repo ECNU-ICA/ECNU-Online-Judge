@@ -63,4 +63,4 @@ int main ()
         printf("%d\n",cnt);
     }
     return 0;
-}//Parsed in 0.111 seconds
+}//Parsed in 0.061 seconds

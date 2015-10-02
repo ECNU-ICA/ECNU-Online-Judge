@@ -40,4 +40,4 @@ int main ()
         printf("Chessboard #%d:%d\n",con++,cnt);
     }
     return 0;
-}//Parsed in 0.043 seconds
+}//Parsed in 0.059 seconds

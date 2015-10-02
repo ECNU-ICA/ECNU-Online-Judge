@@ -37,4 +37,4 @@ int main ()
             cout<<k[i]<<endl;
         }
     }
-}//Parsed in 0.065 seconds
+}//Parsed in 0.070 seconds

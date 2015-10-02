@@ -107,4 +107,4 @@ int main()
         printf("%c%c%c%c-%c%c%c%c %d\n",s[t].num[0],s[t].num[1],s[t].num[2],s[t].num[3],s[t].num[4],s[t].num[5],s[t].num[6],s[t].num[7],con);
     }
     return 0;
-}//Parsed in 0.166 seconds
+}//Parsed in 0.141 seconds

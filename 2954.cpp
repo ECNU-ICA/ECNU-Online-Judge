@@ -37,4 +37,4 @@ int main()
         printf("case #%d:\n%d\n",k++,count_);
     }
     return 0;
-}//Parsed in 0.032 seconds
+}//Parsed in 0.060 seconds

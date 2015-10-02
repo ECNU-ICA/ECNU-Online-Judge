@@ -22,7 +22,7 @@ LL extgcd(LL a, LL b, LL &x, LL &y)
     y = t - a/b*y;
     return d;
 }
-//Çó½âÄ£ÏßÐÔ·½³Ì×éx mod ai =bi
+//求解模线性方程组x mod ai =bi
 LL China_Reminder(int len, LL* a, LL* n)
 {
     int i;
@@ -57,4 +57,4 @@ int main ()
         printf("%I64d\n",China_Reminder(n,b,a));
     }
     return 0;
-}//Parsed in 0.066 seconds
+}//Parsed in 0.095 seconds

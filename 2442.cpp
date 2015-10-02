@@ -25,4 +25,4 @@ int main ()
         printf("\n");
     }
     return 0;
-}//Parsed in 0.048 seconds
+}//Parsed in 0.029 seconds

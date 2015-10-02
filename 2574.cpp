@@ -70,4 +70,4 @@ int main()
         printf("%s\n",A()&&ex[index]=='\0'?"Good":"Bad");
     }
     return 0;
-}//Parsed in 0.107 seconds
+}//Parsed in 0.059 seconds

@@ -9,18 +9,18 @@ using namespace std;
 #define maxDigits 300
 
 
-//¸ß¾«¶ÈÕûÊý½á¹¹Ìå
+//高精度整数结构体
 typedef struct bigInteger
 {
     int digit[maxDigits];
     int size;
-    void init()//³õÊ¼»¯
+    void init()//初始化
     {
         for (int i = 0; i < maxDigits; i ++)
             digit[i] = 0;
         size = 0;
     }
-    //ÓÃÒ»¸öÆÕÍ¨ÕûÊý³õÊ¼»¯¸ß¾«¶ÈÕûÊý
+    //用一个普通整数初始化高精度整数
     void set (int x)
     {
         init();
@@ -43,31 +43,31 @@ typedef struct bigInteger
     }
     void set(char str[])
     {
-        //´Ó×Ö·û´®ÖÐÌáÈ¡ÕûÊý
-        init(); //¶Ô½á¹¹Ìå³õÊ¼»¯
-        int L = strlen(str); //¼ÆËã×Ö·û´®³¤¶È
-        //´Ó×îºóÒ»¸ö×Ö·û¿ªÊ¼µ¹Ðò±éÀú×Ö·û´®,
-        //j¿ØÖÆÃ¿4¸ö×Ö·û×ª»»ÎªÒ»¸öÊý×Ö´æÈëÊý×é,
-        //tÁÙÊ±±£´æ×Ö·û×ª»»ÎªÊý×ÖµÄÖÐ¼äÖµ,
-        //c±íÊ¾µ±Ç°Î»µÄÈ¨ÖØ,°´1,10,100,1000Ë³Ðò±ä»¯
+        //从字符串中提取整数
+        init(); //对结构体初始化
+        int L = strlen(str); //计算字符串长度
+        //从最后一个字符开始倒序遍历字符串,
+        //j控制每4个字符转换为一个数字存入数组,
+        //t临时保存字符转换为数字的中间值,
+        //c表示当前位的权重,按1,10,100,1000顺序变化
         for (int i = L - 1,j = 0,t = 0,c = 1; i >= 0; i --)
         {
-            //¼ÆËãÕâ¸öËÄÎ»ÊýÖÐµ±Ç°×Ö·û´ú±íµÄÊý×Ö,¼´Êý×Ö³ËÒÔµ±Ç°Î»È¨ÖØ
+            //计算这个四位数中当前字符代表的数字,即数字乘以当前位权重
             t += (str[i] - '0') * c;
-            j ++; //µ±Ç°×ª»»×Ö·ûÊýÔö¼Ó
-            c *= 10; //¼ÆËãÏÂÒ»Î»È¨ÖØ
-            //ÈôÒÑ¾­Á¬Ðø×ª»»ËÄ¸ö×Ö·û,»òÕßÒÑ¾­µ½´ï×îºóÒ»¸ö×Ö·û
+            j ++; //当前转换字符数增加
+            c *= 10; //计算下一位权重
+            //若已经连续转换四个字符,或者已经到达最后一个字符
             if (j == 4 || i == 0)
             {
-                //½«ÕâËÄ¸ö×Ö·û´ú±íµÄËÄÎ»Êý´æÈëÊý×é,sizeÒÆ¶¯µ½ÏÂÒ»¸öÊý×éµ¥Î»
+                //将这四个字符代表的四位数存入数组,size移动到下一个数组单位
                 digit[size ++] = t;
-                j = 0;//ÖØÐÂ¿ªÊ¼¼ÆËãÏÂ4¸ö×Ö·û
-                t = 0;//ÁÙÊ±±äÁ¿Çå0
-                c = 1; //È¨ÖØ±äÎª1
+                j = 0;//重新开始计算下4个字符
+                t = 0;//临时变量清0
+                c = 1; //权重变为1
             }
         }
     }
-    void output()//Êä³ö
+    void output()//输出
     {
         for (int i = size - 1; i >= 0; i --)
         {
@@ -75,7 +75,7 @@ typedef struct bigInteger
             else printf("%d",digit[i]);
         }
     }
-    //¸ß¾«¶ÈÕûÊýÓëÆÕÍ¨ÕûÊýµÄ³Ë»ý
+    //高精度整数与普通整数的乘积
     bigInteger operator * (int x) const
     {
         bigInteger ret;
@@ -94,7 +94,7 @@ typedef struct bigInteger
         }
         return ret;
     }
-    //¸ß¾«¶ÈÕûÊýÓë¸ß¾«¶ÈÕûÊýµÄ³Ë»ý
+    //高精度整数与高精度整数的乘积
     bigInteger operator * (const bigInteger &A) const
     {
         bigInteger ret;
@@ -134,14 +134,14 @@ typedef struct bigInteger
 //            printf("\n");
 //            printf("=====================\n");
         }
-        //Çå³ý¸ßÎ»0
+        //清除高位0
         while(ret.digit[ret.size-1]==0&&ret.size>=2)
         {
             ret.size--;
         }
         return ret;
     }
-    //¸ß¾«¶ÈÕûÊýÖ®¼äµÄ¼Ó·¨ÔËËã
+    //高精度整数之间的加法运算
     bigInteger operator + (const bigInteger &A) const
     {
         bigInteger ret;
@@ -160,7 +160,7 @@ typedef struct bigInteger
         }
         return ret;
     }
-    //¸ß¾«¶ÈÕûÊýÖ®¼äµÄ¼õ·¨ÔËËã£¬½öÖ§³Ö´óÊý-Ð¡Êý
+    //高精度整数之间的减法运算，仅支持大数-小数
     bigInteger operator - (const bigInteger &A) const
     {
         bigInteger ret;
@@ -185,52 +185,52 @@ typedef struct bigInteger
         {
             ret.digit[ret.size ++] = carry;
         }
-        //Çå³ý¸ßÎ»0
+        //清除高位0
         while(ret.digit[ret.size-1]==0&&ret.size>=2)
         {
             ret.size--;
         }
         return ret;
     }
-    //¸ß¾«¶ÈÕûÊý³ýÒÔÆÕÍ¨ÕûÊý£¬½öÖ§³Ö´óÊý/Ð¡Êý
+    //高精度整数除以普通整数，仅支持大数/小数
     bigInteger operator / (int x) const
     {
-        bigInteger ret; //·µ»ØµÄ¸ß¾«¶ÈÕûÊý
-        ret.init(); //·µ»ØÖµ³õÊ¼»¯
-        int remainder = 0; //ÓàÊý
-        //´Ó×î¸ßÎ»ÖÁ×îµÍÎ»ÒÀ´ÎÍê³É¼ÆËã
+        bigInteger ret; //返回的高精度整数
+        ret.init(); //返回值初始化
+        int remainder = 0; //余数
+        //从最高位至最低位依次完成计算
         for (int i = size - 1; i >= 0; i --)
         {
-            //¼ÆËãµ±Ç°Î»ÊýÖµ¼ÓÉÏ¸ßÎ»Ê£ÓàµÄÓàÊýµÄºÍ¶ÔxÇóµÃµÄÉÌ
+            //计算当前位数值加上高位剩余的余数的和对x求得的商
             int t = (remainder * 10000 + digit[i]) / x;
-            //¼ÆËãµ±Ç°Î»ÊýÖµ¼ÓÉÏ¸ßÎ»Ê£ÓàµÄÓàÊýµÄºÍ¶ÔxÇóÄ£ºóµÃµÄÓàÊý
+            //计算当前位数值加上高位剩余的余数的和对x求模后得的余数
             int r = (remainder * 10000 + digit[i]) % x;
-            ret.digit[i] = t; //±£´æ±¾Î»µÄÖµ
-            remainder = r; //±£´æÖÁ±¾Î»ÎªÖ¹µÄÓàÊý
+            ret.digit[i] = t; //保存本位的值
+            remainder = r; //保存至本位为止的余数
         }
-        // ·µ»Ø¸ß¾«¶ÈÕûÊýµÄsize ³õÊ¼ÖµÎª0,
-        //¼´µ±ËùÓÐÎ»Êý×Ö¶¼Îª0Ê±,digit[0]´ú±íÊý×Ö0,
-        //×÷Îª×î¸ßÓÐÐ§Î»,¸ß¾«¶ÈÕûÊý¼´ÎªÊý×Ö0
+        // 返回高精度整数的size 初始值为0,
+        //即当所有位数字都为0时,digit[0]代表数字0,
+        //作为最高有效位,高精度整数即为数字0
         ret.size = 0;
         for (int i = 0; i < maxDigits; i ++)
         {
             if (digit[i] != 0) ret.size = i;
-        } //Èô´æÔÚ·Ç0Î»,È·¶¨×î¸ßµÄ·Ç0Î»,×÷Îª×î¸ßÓÐÐ§Î»
-        //×î¸ßÓÐÐ§Î»µÄÏÂÒ»Î»¼´ÎªÏÂÒ»¸öÎÒÃÇ²»ÔøÊ¹ÓÃµÄdigitÊý×éµ¥Ôª,È·¶¨ÎªsizeµÄÖµ
+        } //若存在非0位,确定最高的非0位,作为最高有效位
+        //最高有效位的下一位即为下一个我们不曾使用的digit数组单元,确定为size的值
         ret.size ++;
-        return ret; //·µ»Ø
+        return ret; //返回
     }
-    //¸ß¾«¶ÈÕûÊý¶ÔÆÕÍ¨ÕûÊýÇóÓàÊý
+    //高精度整数对普通整数求余数
     int operator % (int x) const
     {
-        int remainder = 0; //ÓàÊý
+        int remainder = 0; //余数
         for (int i = size - 1; i >= 0; i --)
         {
             //int t = (remainder * 10000 + digit[i]) / x;
             int r = (remainder * 10000 + digit[i]) % x;
             remainder = r;
-        } //¹ý³ÌÍ¬¸ß¾«¶ÈÕûÊý¶ÔÆÕÍ¨ÕûÊýÇóÉÌ
-        return remainder; //·µ»ØÓàÊý
+        } //过程同高精度整数对普通整数求商
+        return remainder; //返回余数
     }
     bool operator < (const bigInteger &A) const
     {
@@ -298,17 +298,17 @@ typedef struct bigInteger
         }
         return false;
     }
-    //¸ß¾«¶ÈÕûÊý³ýÒÔ¸ß¾«¶ÈÕûÊý£¬½öÖ§³Ö´óÊý/Ð¡Êý
+    //高精度整数除以高精度整数，仅支持大数/小数
     bigInteger operator / (const bigInteger &A) const
     {
-        bigInteger ret; //·µ»ØµÄ¸ß¾«¶ÈÕûÊý
-        ret.init(); //·µ»ØÖµ³õÊ¼»¯
-        bigInteger remainder; //ÓàÊý
+        bigInteger ret; //返回的高精度整数
+        ret.init(); //返回值初始化
+        bigInteger remainder; //余数
         remainder.set(0);
         for(int i=0; i<size; ++i)
             ret.digit[i]=digit[i];
         ret.size=size;
-        //Ñ°ÕÒ´óÌå·¶Î§
+        //寻找大体范围
         bigInteger beiShu;
         beiShu.set(1);
         while(true)
@@ -317,7 +317,7 @@ typedef struct bigInteger
                 break;
             beiShu=beiShu*10;
         }
-        //´óÌå·¶Î§ÔÚ(beiShu~10*beiShu)£¬²ÉÓÃ¶þ·Ö²éÕÒ
+        //大体范围在(beiShu~10*beiShu)，采用二分查找
         bigInteger low,high,mid,_one;
         _one.set(1);
         low=beiShu;
@@ -330,22 +330,22 @@ typedef struct bigInteger
             else
                 high=mid-_one;
         }
-        if(ret<mid*A)//ÉÌÐÞÕý
+        if(ret<mid*A)//商修正
             mid=mid-_one;
         remainder=ret-mid*A;
-        return mid;//·µ»Ø
+        return mid;//返回
     }
-    //¸ß¾«¶ÈÕûÊý¶Ô¸ß¾«¶ÈÕûÊýÇóÓàÊý
+    //高精度整数对高精度整数求余数
     bigInteger operator % (const bigInteger &A) const
     {
-        bigInteger ret; //·µ»ØµÄ¸ß¾«¶ÈÕûÊý
-        ret.init(); //·µ»ØÖµ³õÊ¼»¯
-        bigInteger remainder; //ÓàÊý
+        bigInteger ret; //返回的高精度整数
+        ret.init(); //返回值初始化
+        bigInteger remainder; //余数
         remainder.set(0);
         for(int i=0; i<size; ++i)
             ret.digit[i]=digit[i];
         ret.size=size;
-        //Ñ°ÕÒ´óÌå·¶Î§
+        //寻找大体范围
         bigInteger beiShu;
         beiShu.set(1);
         while(true)
@@ -354,7 +354,7 @@ typedef struct bigInteger
                 break;
             beiShu=beiShu*10;
         }
-        //´óÌå·¶Î§ÔÚ(beiShu~10*beiShu)£¬²ÉÓÃ¶þ·Ö²éÕÒ
+        //大体范围在(beiShu~10*beiShu)，采用二分查找
         bigInteger low,high,mid,_one;
         _one.set(1);
         low=beiShu;
@@ -365,10 +365,10 @@ typedef struct bigInteger
             if(mid*A<ret) low=mid+_one;
             else high=mid-_one;
         }
-        if(ret<mid*A)//ÉÌÐÞÕý
+        if(ret<mid*A)//商修正
             mid=mid-_one;
         remainder=ret-mid*A;
-        return remainder;//·µ»Ø
+        return remainder;//返回
     }
 } bigInteger;
 
@@ -403,4 +403,4 @@ int main ()
         printf("\n");
     }
     return 0;
-}//Parsed in 0.717 seconds
+}//Parsed in 0.716 seconds

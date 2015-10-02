@@ -32,4 +32,4 @@ int main ()
             printf("No\n");
     }
     return 0;
-}//Parsed in 0.051 seconds
+}//Parsed in 0.029 seconds

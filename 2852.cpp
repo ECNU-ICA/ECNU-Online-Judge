@@ -41,4 +41,4 @@ int main()
                 printf("%c %.2lf\n",index+'a',1.0*num[index]/len_v);
     }
     return 0;
-}//Parsed in 0.075 seconds
+}//Parsed in 0.044 seconds

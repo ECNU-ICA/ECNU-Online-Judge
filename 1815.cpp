@@ -36,4 +36,4 @@ int main()
         printf("%d\n",sum);
     }
     return 0;
-}//Parsed in 0.058 seconds
+}//Parsed in 0.043 seconds

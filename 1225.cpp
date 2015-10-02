@@ -25,4 +25,4 @@ int main ()
         printf("%d\n",(a/gcd(a,b))*b);
     }
     return 0;
-}//Parsed in 0.030 seconds
+}//Parsed in 0.020 seconds

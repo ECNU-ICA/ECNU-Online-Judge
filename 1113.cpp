@@ -37,4 +37,4 @@ int main()
         printf("%d\n",V-dp[V]);
     }
     return 0;
-}//Parsed in 0.057 seconds
+}//Parsed in 0.058 seconds

@@ -48,4 +48,4 @@ int main()
         printf("%d\n",sum);
     }
     return 0;
-}//Parsed in 0.059 seconds
+}//Parsed in 0.069 seconds

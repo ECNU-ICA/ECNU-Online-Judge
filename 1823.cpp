@@ -42,4 +42,4 @@ int main ()
         printf("%d\n",dp[0][0][0]<dp[0][0][1]?dp[0][0][1]:dp[0][0][0]);
     }
     return 0;
-}//Parsed in 0.093 seconds
+}//Parsed in 0.104 seconds

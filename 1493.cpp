@@ -25,4 +25,4 @@ int main()
         printf("%I64d\n",(__int64)ceil(x));
     }
     return 0;
-}//Parsed in 0.037 seconds
+}//Parsed in 0.033 seconds

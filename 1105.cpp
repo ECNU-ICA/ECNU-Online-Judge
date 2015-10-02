@@ -43,4 +43,4 @@ int main()
             printf("%d\n",c);
     }
     return 0;
-}//Parsed in 0.067 seconds
+}//Parsed in 0.066 seconds

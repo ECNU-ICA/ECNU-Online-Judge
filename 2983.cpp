@@ -5,7 +5,11 @@
 #include<cmath>
 
 
+
+
 using namespace std;
+
+
 
 
 int adj[105][105];
@@ -21,6 +25,8 @@ void dfs(int x,int y,int dir)
         if(y+1<n&&adj[x][y+1]==-1)
         {
             adj[x][y+1]=cnt++;
+
+
 
 
             dfs(x,y+1,dir);
@@ -69,11 +75,17 @@ void dfs(int x,int y,int dir)
 }
 
 
+
+
 int main ()
 {
     //freopen("in.txt","r",stdin);
-    while(scanf("%d",&n)!=EOF)
+    int cas,cnt2=0;
+    scanf("%d",&cas);
+    while(cas--)
     {
+        scanf("%d",&n);
+        printf("case #%d:\n",cnt2++);
         memset(adj,-1,sizeof(adj));
         adj[0][0]=1;
         cnt=2;
@@ -92,4 +104,4 @@ int main ()
         }
     }
     return 0;
-}//Parsed in 0.081 seconds
+}//Parsed in 0.083 secondsParsed in 0.158 seconds

@@ -18,7 +18,7 @@ struct CInteger
             printf("%c",s[i]);
         }
     }
-    //³ýÈ¥¸ßÎ»0
+    //除去高位0
     void DeleteUpperZero( void )
     {
         string::size_type i;
@@ -32,14 +32,14 @@ struct CInteger
         }
         return;
     }
-    //È¡¾ø¶ÔÖµ
+    //取绝对值
 	CInteger Abs( void ) const
     {
         CInteger c( *this );
         c.s[0] = '+';
         return c;
     }
-    //È¡µÃÊý×Ö²»´ø·ûºÅ
+    //取得数字不带符号
 	string AbsToString( void ) const
     {
         string str( s.substr( 1 ) );
@@ -52,7 +52,7 @@ struct CInteger
         }
         return str;
     }
-    //È¡µÃÊý×ÖµÄ·ûºÅ
+    //取得数字的符号
     string SignToString( void ) const
     {
         return s.substr( 0, 1 );
@@ -77,7 +77,7 @@ struct CInteger
     {
         *this = str;
     }
-    //¸ß¾«¶ÈÓë¸ß¾«¶ÈÔËËã
+    //高精度与高精度运算
     CInteger operator=( int x )
     {
         if( x )
@@ -100,7 +100,7 @@ struct CInteger
         }
         return *this;
     }
-    //ÐèÒªDeleteUpperZero()
+    //需要DeleteUpperZero()
     CInteger operator=( const string & str )
     {
         if( ( str.find_first_not_of( "0123456789+-" ) != string::npos ) || ( str.find_first_of( "0123456789" ) == string::npos ) || ( str.length()<1 ) )
@@ -130,7 +130,7 @@ struct CInteger
         s = x.s;
         return *this;
     }
-    //ÐèÒªDeleteUpperZero()
+    //需要DeleteUpperZero()
     CInteger operator+(const CInteger &x ) const
     {
         CInteger c;
@@ -171,7 +171,7 @@ struct CInteger
             return *this - c;
         }
     }
-    //ÐèÒªDeleteUpperZero()
+    //需要DeleteUpperZero()
     CInteger operator-(const CInteger &x ) const
     {
         CInteger c( x );
@@ -214,7 +214,7 @@ struct CInteger
             return *this + c;
         }
     }
-    //ÐèÒªDeleteUpperZero()
+    //需要DeleteUpperZero()
     CInteger operator*(const CInteger &x ) const
     {
         CInteger c;
@@ -241,17 +241,17 @@ struct CInteger
         c.DeleteUpperZero();
         return c;
     }
-    //ÐèÒª AbsDivAbs()
+    //需要 AbsDivAbs()
     CInteger operator/(const CInteger &x ) const
     {
         return this->AbsDivAbs( x );
     }
-    //ÐèÒª AbsModAbs()
+    //需要 AbsModAbs()
     CInteger operator%(const CInteger &x ) const
     {
         return this->AbsModAbs( x );
     }
-    //ÐèÒªDeleteUpperZero() CompareAbs() Abs()
+    //需要DeleteUpperZero() CompareAbs() Abs()
     CInteger AbsDivAbs(const CInteger &x ) const
     {
         int i = this->CompareAbs( x );
@@ -280,12 +280,12 @@ struct CInteger
         c.DeleteUpperZero();
         return c;
     }
-    //ÐèÒª AbsDivAbs()
+    //需要 AbsDivAbs()
     CInteger AbsModAbs(const CInteger &x ) const
     {
         return this->Abs() - this->AbsDivAbs( x ) * x.Abs();
     }
-    // ´óÐ¡±È½ÏÐèÒªÓÃµ½¸Ãº¯Êý ÐèÒªCompareAbs()
+    // 大小比较需要用到该函数 需要CompareAbs()
     int Compare( const CInteger & x ) const
     {
         if( s[0] == x.s[0] )
@@ -308,7 +308,7 @@ struct CInteger
             return -1;
         }
     }
-    // °´¾ø¶ÔÖµ´óÐ¡±È½Ï
+    // 按绝对值大小比较
     int CompareAbs( const CInteger & x ) const
     {
         if( s.length() > x.s.length() )
@@ -332,27 +332,27 @@ struct CInteger
         }
         return 0;
     }
-    //ÐèÒª Compare()
+    //需要 Compare()
     int operator<( const CInteger & x ) const
     {
         return this->Compare( x ) < 0;
     }
-    //ÐèÒª Compare()
+    //需要 Compare()
     int operator==( const CInteger & x ) const
     {
         return this->Compare( x ) == 0;
     }
-    //ÐèÒª Compare()
+    //需要 Compare()
     int operator>( const CInteger & x ) const
     {
         return this->Compare( x ) > 0;
     }
-    //ÐèÒª Compare()
+    //需要 Compare()
     int operator<=( const CInteger & x ) const
     {
         return this->Compare( x ) < 1;
     }
-    //ÐèÒª Compare()
+    //需要 Compare()
     int operator>=( const CInteger & x ) const
     {
         return this->Compare( x ) > -1;
@@ -384,4 +384,4 @@ int main()
 
 
     return 0;
-}//Parsed in 0.697 seconds
+}//Parsed in 0.690 seconds

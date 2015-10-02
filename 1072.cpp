@@ -47,4 +47,4 @@ int main()
             printf("%s\n",s[i].str);
     }
     return 0;
-}//Parsed in 0.070 seconds
+}//Parsed in 0.039 seconds

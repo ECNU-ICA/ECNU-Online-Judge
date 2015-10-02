@@ -16,4 +16,4 @@ int main()
         printf("%I64d\n",a+b);
     }
     return 0;
-}//Parsed in 0.012 seconds
+}//Parsed in 0.020 seconds

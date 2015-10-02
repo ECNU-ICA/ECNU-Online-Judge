@@ -21,25 +21,25 @@ int const MAX=1005;
 int father[MAX];
 
 
-/* ³õÊ¼»¯¼¯ºÏ*/
+/* 初始化集合*/
 void Make_Set(int x)
 {
     father[x] = x;
 }
 
 
-/* ²éÕÒxÔªËØËùÔÚµÄ¼¯ºÏ,»ØËÝÊ±Ñ¹ËõÂ·¾¶*/
+/* 查找x元素所在的集合,回溯时压缩路径*/
 int Find_Set(int x)
 {
     if (x != father[x])
     {
-        father[x] = Find_Set(father[x]); //Õâ¸ö»ØËÝÊ±µÄÑ¹ËõÂ·¾¶ÊÇ¾«»ª
+        father[x] = Find_Set(father[x]); //这个回溯时的压缩路径是精华
     }
     return father[x];
 }
 
 
-/* ²¢¼¯ */
+/* 并集 */
 int Union(int x, int y)
 {
     x = Find_Set(x);
@@ -82,4 +82,4 @@ int main()
         printf("%d\n",msum);
     }
     return 0;
-}//Parsed in 0.070 seconds
+}//Parsed in 0.083 seconds

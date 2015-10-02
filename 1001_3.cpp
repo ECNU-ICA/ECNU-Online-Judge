@@ -140,4 +140,4 @@ int main()
         printf("%s\n",d.c_str());
     }
     return 0;
-}//Parsed in 0.197 seconds
+}//Parsed in 0.149 seconds

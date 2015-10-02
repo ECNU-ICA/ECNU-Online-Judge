@@ -18,13 +18,13 @@ using namespace std;
 #define MAXE MAXN*MAXN*2
 #define SET(a,b) memset(a,b,sizeof(a))
 deque<int> Q;
-//g[i][j]´æ·Å¹ØÏµÍ¼£ºi,jÊÇ·ñÓÐ±ß
-//match[i]´æ·ÅiËùÆ¥ÅäµÄµã
+//g[i][j]存放关系图：i,j是否有边
+//match[i]存放i所匹配的点
 bool g[MAXN][MAXN],inque[MAXN],inblossom[MAXN];
 int match[MAXN],pre[MAXN],base[MAXN];
 
 
-//ÕÒ¹«¹²×æÏÈ
+//找公共祖先
 int findancestor(int u,int v)
 {
     bool inpath[MAXN]= {false};
@@ -44,7 +44,7 @@ int findancestor(int u,int v)
 }
 
 
-//Ñ¹Ëõ»¨
+//压缩花
 void reset(int u,int anc)
 {
     while(u!=anc)
@@ -141,7 +141,7 @@ int main()
     scanf("%d",&n);
     while(n--)
     {
-        ans=0;//×î¶àÓÐ¼¸¶ÔÆ¥Åä
+        ans=0;//最多有几对匹配
         memset(g,0,sizeof(g));
         scanf("%d",&m);
         for(int i=1;i<=m;i++)
@@ -161,4 +161,4 @@ int main()
 
 
     return 0;
-}//Parsed in 0.318 seconds
+}//Parsed in 0.250 seconds

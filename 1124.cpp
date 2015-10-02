@@ -34,4 +34,4 @@ int main()
         printf("%d\n",ans);
     }
     return 0;
-}//Parsed in 0.025 seconds
+}//Parsed in 0.047 seconds

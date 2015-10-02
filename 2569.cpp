@@ -17,4 +17,4 @@ int main()
         printf("%s\n",str);
     }
     return 0;
-}//Parsed in 0.037 seconds
+}//Parsed in 0.035 seconds

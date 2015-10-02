@@ -34,4 +34,4 @@ int main()
         printf("%.2lf %.2lf\n",avg,dev);
     }
     return 0;
-}//Parsed in 0.044 seconds
+}//Parsed in 0.053 seconds

@@ -28,4 +28,4 @@ int main()
         printf("%d\n",num);
     }
     return 0;
-}//Parsed in 0.039 seconds
+}//Parsed in 0.040 seconds

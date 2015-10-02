@@ -16,4 +16,4 @@ int main()
         printf("%.3lf\n",sqrt(a*a+b*b));
     }
     return 0;
-}//Parsed in 0.021 seconds
+}//Parsed in 0.022 seconds
